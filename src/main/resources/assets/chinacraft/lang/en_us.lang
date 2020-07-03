@@ -1,0 +1,9 @@
+#China Craft Food
+
+item.chinacraft.moon_cake.name=Moon Cake
+item.chinacraft.dumplings.name=Dumpling
+item.chinacraft.flour.name=Flour
+item.chinacraft.flour_pastry.name=Flour Pastry
+
+#TABS
+itemGroup.china_craft=China Craft
