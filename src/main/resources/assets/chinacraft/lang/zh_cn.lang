@@ -2,8 +2,13 @@
 
 item.chinacraft.moon_cake.name=月饼
 item.chinacraft.dumplings.name=饺子
+
+#China Craft Raw Material
 item.chinacraft.flour.name=面粉
-item.chinacraft.flour_pastry.name=面饼
+item.chinacraft.flour_pastry.name=面皮
+item.chinacraft.flour_silk.name=面条
+item.chinacraft.rice.name=糙米
+item.chinacraft.sticky_rice.name=糯米
 
 #TABS
 itemGroup.china_craft=华夏文明

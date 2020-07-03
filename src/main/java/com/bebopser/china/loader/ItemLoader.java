@@ -18,7 +18,10 @@ public class ItemLoader {
 
     public static ItemBase raw_materials = new ItemBase("itemRawMaterials", 64,
             Reference.MODID + "." + "flour",
-            Reference.MODID + "." + "flour_pastry");
+            Reference.MODID + "." + "flour_pastry",
+            Reference.MODID + "." + "flour_silk",
+            Reference.MODID + "." + "rice",
+            Reference.MODID + "." + "sticky_rice");
 
     public ItemLoader(FMLPreInitializationEvent event) {
         register(moon_cake);

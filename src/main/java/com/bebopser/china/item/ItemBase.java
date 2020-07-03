@@ -38,9 +38,6 @@ public class ItemBase extends Item {
     }
 
     public String[] getSubNames() {
-        System.out.println("========================================================================");
-        System.out.println(this.subNames);
-        System.out.println("========================================================================");
         return this.subNames;
     }
 
