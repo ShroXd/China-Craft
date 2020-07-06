@@ -3,6 +3,7 @@ package com.bebopser.china.loader;
 import com.bebopser.china.Reference;
 import com.bebopser.china.item.ItemBase;
 import com.bebopser.china.item.ItemFoodBasic;
+import com.bebopser.china.item.items.ItemRawFood;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -17,33 +18,28 @@ public class ItemLoader {
     public static Item moon_cake = new Item().setUnlocalizedName(Reference.MODID + "." + "moon_cake").setMaxStackSize(64);
     public static Item dumplings = new Item().setUnlocalizedName(Reference.MODID + "." + "dumplings").setMaxStackSize(64);
 
-    public static ItemBase raw_materials = new ItemBase("itemRawMaterials", 64,
-            //Reference.MODID + "." + "flour",
-            //Reference.MODID + "." + "flour_pastry",
-            Reference.MODID + "." + "flour_silk",
-            Reference.MODID + "." + "rice",
-            Reference.MODID + "." + "sticky_rice");
-
-    public static ItemFoodBasic raw = new ItemFoodBasic("raw", 64,
-            new int[] {6},
-            new float[] {0.6F},
-            new String[]{
-            Reference.MODID + "." + "flour",
-            Reference.MODID + "." + "flour_pastry"});
+    public static ItemRawFood rawFood = new ItemRawFood("rawFood", 64,
+            new int[] {-1, -1},
+            new float[] {0.6F, 0.6F},
+            new String[] {
+                    Reference.MODID + "." + "flour",
+                    Reference.MODID + "." + "flour_pastry",
+                    Reference.MODID + "." + "flour_silk",
+                    Reference.MODID + "." + "rice",
+                    Reference.MODID + "." + "sticky_rice"
+            });
 
     public ItemLoader(FMLPreInitializationEvent event) {
         register(moon_cake);
         register(dumplings);
-        register(raw_materials);
-        register(raw);
+        register(rawFood);
     }
 
     @SideOnly(Side.CLIENT)
     public static void registerRenders() {
         registerRender(moon_cake);
         registerRender(dumplings);
-        registerRender(raw_materials);
-        registerRender(raw);
+        registerRender(rawFood);
     }
 
     private static void register(Item item) {
@@ -71,10 +67,7 @@ public class ItemLoader {
     }
 
     @SideOnly(Side.CLIENT)
-    private static void registerRender(ItemFoodBasic item) {
-        System.out.println("====================================");
-        System.out.println(item.getSubNames());
-        System.out.println("====================================");
+    private static void registerRender(ItemRawFood item) {
         for(int i = 0; i < item.getSubNames().length; i++){
             String name = item.getSubNames()[i].substring(Reference.MODID.length() + 1);
             ModelResourceLocation model = new ModelResourceLocation(new ResourceLocation(Reference.MODID,name), "inventory");

@@ -14,7 +14,7 @@ public class Reference {
     public static CreativeTabs tab = new CreativeTabs("china_craft") {
         @Override
         public ItemStack getTabIconItem() {
-            return new ItemStack(ItemLoader.dumplings);
+            return new ItemStack(ItemLoader.rawFood);
         }
     };
 }

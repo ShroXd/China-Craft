@@ -1,4 +1,4 @@
-package com.bebopser.china.item;
+package com.bebopser.china.item.items;
 
 import com.bebopser.china.Reference;
 import net.minecraft.creativetab.CreativeTabs;
@@ -10,14 +10,14 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 
-public class ItemFoodBasic extends ItemFood {
+public class ItemRawFood extends ItemFood {
 
     // https://blog.csdn.net/qp120291570/article/details/52705360?utm_source=blogxgwz4
     private String[] subNames;
     private int[] amounts;
     private float[] saturations;
 
-    public ItemFoodBasic(String name, int stackSize, int[] amounts, float[] saturations, String[] subNames) {
+    public ItemRawFood(String name, int stackSize, int[] amounts, float[] saturations, String[] subNames) {
         super(amounts[0], saturations[0], false);
         boolean isSubnamesExist = checkSubNames(subNames);
 
