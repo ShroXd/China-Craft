@@ -3,8 +3,10 @@ package com.bebopser.china.item;
 import com.bebopser.china.Reference;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 
@@ -17,9 +19,10 @@ public class ItemFoodBasic extends ItemFood {
     public ItemFoodBasic(String name, int stackSize, int[] amounts, float[] saturations, String... subNames) {
         super(amounts[0], saturations[0], false);
         this.setUnlocalizedName(Reference.MODID + "." + name);
+        this.setAlwaysEdible();
         this.setMaxStackSize(stackSize);
-        this.setHasSubtypes(checksubNames());
-        this.subNames = checksubNames() ? subNames: null;
+        this.setHasSubtypes(subNames!=null&&subNames.length > 0);
+        this.subNames = subNames!=null&&subNames.length > 0 ? subNames: null;
         this.amounts = amounts;
         this.saturations = saturations;
     }
@@ -39,7 +42,7 @@ public class ItemFoodBasic extends ItemFood {
     @Override
     public void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
         if (!world.isRemote) {
-            // PotionLoader
+            player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 60*20, 5, false, true));
         }
 
         super.onFoodEaten(stack, world, player);
@@ -69,18 +72,18 @@ public class ItemFoodBasic extends ItemFood {
     }
 
     public int[] getAmounts() {
-        return amounts;
+        return this.amounts;
     }
 
     public float[] getSaturations() {
-        return saturations;
+        return this.saturations;
     }
 
     public String[] getSubNames() {
-        return subNames;
+        return this.subNames;
     }
 
-    private boolean checksubNames() {
+    private boolean checkSubnames(String... subNames) {
         return subNames != null && subNames.length > 0;
     }
 }
