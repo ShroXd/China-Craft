@@ -5,14 +5,16 @@ item.chinacraft.dumplings.name=Dumpling
 
 #China Craft Raw Material
 item.chinacraft.flour.name=Flour
+item.chinacraft.dough.name=Dough
 item.chinacraft.flour_pastry.name=Flour Pastry
 item.chinacraft.flour_silk.name=Flour Silk
 item.chinacraft.rice.name=Rice
 item.chinacraft.sticky_rice.name=Stick Rice
 
 #China Craft Tools
-item.chinacraft.bowl.name=bowl
-item.chinacraft.rolling_pin.name=rolling pin
+item.chinacraft.bowl.name=Bowl
+item.chinacraft.rolling_pin.name=Rolling Pin
+item.chinacraft.kitchen_knife.name=Kitchen Knife
 
 #TABS
 itemGroup.china_craft=China Craft

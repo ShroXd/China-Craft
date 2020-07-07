@@ -30,6 +30,7 @@ public class ItemLoader {
             new float[] {0.6F, 0.6F},
             new String[] {
                     Reference.MODID + "." + "flour",
+                    Reference.MODID + "." + "dough",
                     Reference.MODID + "." + "flour_pastry",
                     Reference.MODID + "." + "flour_silk",
                     Reference.MODID + "." + "rice",
@@ -39,7 +40,8 @@ public class ItemLoader {
     public static ItemCustomTool tool = new ItemCustomTool("customTool", 1,
             new String[] {
                     Reference.MODID + "." + "bowl",
-                    Reference.MODID + "." + "rolling_pin"
+                    Reference.MODID + "." + "rolling_pin",
+                    Reference.MODID + "." + "kitchen_knife"
             });
 
     public ItemLoader(FMLPreInitializationEvent event) {
