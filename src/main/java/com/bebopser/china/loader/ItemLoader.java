@@ -38,7 +38,8 @@ public class ItemLoader {
 
     public static ItemCustomTool tool = new ItemCustomTool("customTool", 1,
             new String[] {
-                    Reference.MODID + "." + "bowl"
+                    Reference.MODID + "." + "bowl",
+                    Reference.MODID + "." + "rolling_pin"
             });
 
     public ItemLoader(FMLPreInitializationEvent event) {

@@ -12,6 +12,7 @@ item.chinacraft.sticky_rice.name=Stick Rice
 
 #China Craft Tools
 item.chinacraft.bowl.name=bowl
+item.chinacraft.rolling_pin.name=rolling pin
 
 #TABS
 itemGroup.china_craft=China Craft
