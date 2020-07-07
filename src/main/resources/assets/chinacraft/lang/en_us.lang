@@ -10,5 +10,8 @@ item.chinacraft.flour_silk.name=Flour Silk
 item.chinacraft.rice.name=Rice
 item.chinacraft.sticky_rice.name=Stick Rice
 
+#China Craft Tools
+item.chinacraft.bowl.name=bowl
+
 #TABS
 itemGroup.china_craft=China Craft

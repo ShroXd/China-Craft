@@ -2,8 +2,10 @@ package com.bebopser.china.loader;
 
 import com.bebopser.china.Reference;
 import com.bebopser.china.item.ItemFoodBasic;
+import com.bebopser.china.item.ItemBasic;
 import com.bebopser.china.item.items.ItemEdibleFood;
 import com.bebopser.china.item.items.ItemRawFood;
+import com.bebopser.china.item.items.ItemCustomTool;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -34,15 +36,24 @@ public class ItemLoader {
                     Reference.MODID + "." + "sticky_rice"
             });
 
+    public static ItemCustomTool tool = new ItemCustomTool("customTool", 1,
+            new String[] {
+                    Reference.MODID + "." + "bowl"
+            });
+
     public ItemLoader(FMLPreInitializationEvent event) {
         register(edibleFood);
         register(rawFood);
+
+        register(tool);
     }
 
     @SideOnly(Side.CLIENT)
     public static void registerRenders() {
         registerRender(edibleFood);
         registerRender(rawFood);
+
+        registerRender(tool);
     }
 
     private static void register(Item item) {
@@ -56,6 +67,15 @@ public class ItemLoader {
 
     @SideOnly(Side.CLIENT)
     private static void registerRender(ItemFoodBasic itemBase) {
+        for (int i = 0; i < itemBase.getSubNames().length; i++) {
+            String name = itemBase.getSubNames()[i].substring(Reference.MODID.length() + 1);
+            ModelResourceLocation model = new ModelResourceLocation(new ResourceLocation(Reference.MODID, name), "inventory");
+            ModelLoader.setCustomModelResourceLocation(itemBase, i, model);
+        }
+    }
+
+    @SideOnly(Side.CLIENT)
+    private static void registerRender(ItemBasic itemBase) {
         for (int i = 0; i < itemBase.getSubNames().length; i++) {
             String name = itemBase.getSubNames()[i].substring(Reference.MODID.length() + 1);
             ModelResourceLocation model = new ModelResourceLocation(new ResourceLocation(Reference.MODID, name), "inventory");
