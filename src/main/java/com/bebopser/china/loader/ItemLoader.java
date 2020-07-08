@@ -47,7 +47,6 @@ public class ItemLoader {
     public ItemLoader(FMLPreInitializationEvent event) {
         register(edibleFood);
         register(rawFood);
-
         register(tool);
     }
 
@@ -55,7 +54,6 @@ public class ItemLoader {
     public static void registerRenders() {
         registerRender(edibleFood);
         registerRender(rawFood);
-
         registerRender(tool);
     }
 

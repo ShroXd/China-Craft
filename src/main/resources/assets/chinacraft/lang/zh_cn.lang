@@ -16,5 +16,8 @@ item.chinacraft.bowl.name=碗
 item.chinacraft.rolling_pin.name=擀面杖
 item.chinacraft.kitchen_knife.name=菜刀
 
+#China Craft Block
+tile.chinacraft.chopping_board.name=切菜板
+
 #TABS
 itemGroup.china_craft=华夏文明

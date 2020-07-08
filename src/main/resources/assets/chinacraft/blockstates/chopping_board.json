@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "normal": [
+      {
+        "model": "chinacraft:chopping_board"
+      }
+    ]
+  }
+}
