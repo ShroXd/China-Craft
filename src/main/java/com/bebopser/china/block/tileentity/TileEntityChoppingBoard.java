@@ -3,7 +3,6 @@ package com.bebopser.china.block.tileentity;
 import com.bebopser.china.recipes.virtual.IChoppingBoardRecipe;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -39,9 +38,11 @@ public class TileEntityChoppingBoard extends TileEntity implements ITickable {
         if (CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.equals(capability)) {
             if (facing == EnumFacing.EAST) {
                 return (T) InventoryRawFood;
-            } else if (facing == EnumFacing.SOUTH) {
+            }
+            else if (facing == EnumFacing.SOUTH) {
                 return (T) InventoryTool;
-            } else {
+            }
+            else {
                 return (T) InventoryDrink;
             }
         }
@@ -74,11 +75,13 @@ public class TileEntityChoppingBoard extends TileEntity implements ITickable {
             ItemStack rawFood = InventoryRawFood.getStackInSlot(0).copy();
             ItemStack tool = InventoryTool.getStackInSlot(0).copy();
 
-            if (tool.isEmpty() || !(tool.getItem() instanceof ItemTool)) {
+/*            if (tool.isEmpty() || !(tool.getItem() instanceof ItemTool)) {
                 this.cookTime = 0;
                 this.markDirty();
                 return;
-            }
+            }*/
+
+
 
             if (!usedRecipe.isTheSameInput(rawFood, tool)) {
                 usedRecipe = managerChoppingBoard.getRecipes(rawFood, tool);
@@ -89,7 +92,8 @@ public class TileEntityChoppingBoard extends TileEntity implements ITickable {
                 if (this.InventoryDrink.insertItem(0, output, true).isEmpty() &&
                     rawFood.getCount() >= usedRecipe.getRawFoodInput().get(0).getCount() &&
                     tool.getCount() >= usedRecipe.getToolInput().get(0).getCount()) {
-                    if (++this.cookTime >= 400) {
+
+                    if (++this.cookTime >= 200) {
                         InventoryDrink.insertItem(0, output, false);
                         InventoryRawFood.extractItem(0, usedRecipe.getRawFoodInput().get(0).getCount(), false);
                         InventoryTool.extractItem(0, usedRecipe.getToolInput().get(0).getCount(), false);

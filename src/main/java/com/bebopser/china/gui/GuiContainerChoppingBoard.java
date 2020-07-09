@@ -37,8 +37,8 @@ public class GuiContainerChoppingBoard extends GuiContainer {
         this.drawTexturedModalRect(offsetX, offsetY, 0, 0, this.xSize, this.ySize);
 
         int cookTime = this.inventory.getCookTime();
-        int textureWidth = 1 + (int) Math.ceil(24.0 * cookTime / 400);
-        this.drawTexturedModalRect(offsetX + 85, offsetY + 33, 176, 0, textureWidth, 17);
+        int textureWidth = 1 + (int) Math.ceil(24.0 * cookTime / 200);
+        this.drawTexturedModalRect(offsetX + 75, offsetY + 33, 176, 0, textureWidth, 17);
     }
 
     @Override
