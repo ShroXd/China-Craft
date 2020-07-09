@@ -19,6 +19,9 @@ item.chinacraft.kitchen_knife.name=Kitchen Knife
 #China Craft Block
 tile.chinacraft.chopping_board.name=Chopping Board
 
+#China Craft GUI
+chinacraft.container.chopping_board=Chopping Board
+
 #TABS
 itemGroup.china_craft=China Craft
 

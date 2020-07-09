@@ -16,6 +16,7 @@ public class CommonProxy {
         new BlockLoader();
         new ItemLoader(event);
         new PotionLoader(event);
+        new TileEntityLoader();
     }
 
     public void init(FMLInitializationEvent event)

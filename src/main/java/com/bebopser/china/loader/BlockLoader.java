@@ -19,7 +19,7 @@ public class BlockLoader {
 
 
 
-    public static Block chopping_board = new ChoppingBoard("chopping_board", false);
+    public static Block chopping_board = new ChoppingBoard("chopping_board");
 
     public BlockLoader() {
         MinecraftForge.EVENT_BUS.register(this);
@@ -52,11 +52,5 @@ public class BlockLoader {
     private static void registerRender(Block block, String name) {
         ModelResourceLocation model = new ModelResourceLocation(Reference.MODID + ":" + name, "inventory");
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, model);
-    }
-
-    @SideOnly(Side.CLIENT)
-    private static void registerRender(Block block, int meta, String name) {
-        ModelResourceLocation model = new ModelResourceLocation(Reference.MODID + ":" + name, "inventory");
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), meta, model);
     }
 }
