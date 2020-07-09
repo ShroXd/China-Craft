@@ -17,9 +17,15 @@ public class RecipeLoader {
 
     private void addChoppingBoardRecipe() {
         managerChoppingBoard.add(new ChoppingBoardRecipe(
-                NonNullListHelper.createNonNullList(new ItemStack(ItemLoader.rawFood, 1, 3)),
+                NonNullListHelper.createNonNullList(new ItemStack(ItemLoader.rawFood, 1, 1)),
+                NonNullListHelper.createNonNullList(new ItemStack(ItemLoader.tool, 1, 1)),
+                new ItemStack(ItemLoader.rawFood, 1, 2)
+        ));
+
+        managerChoppingBoard.add(new ChoppingBoardRecipe(
+                NonNullListHelper.createNonNullList(new ItemStack(ItemLoader.rawFood, 1, 2)),
                 NonNullListHelper.createNonNullList(new ItemStack(ItemLoader.tool, 1, 2)),
-                new ItemStack(ItemLoader.rawFood, 1, 4)
+                new ItemStack(ItemLoader.rawFood, 1, 3)
         ));
     }
 

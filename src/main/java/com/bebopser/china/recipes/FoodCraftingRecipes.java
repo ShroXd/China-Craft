@@ -17,19 +17,5 @@ public class FoodCraftingRecipes {
                 new ItemStack(ItemLoader.rawFood, 1, 0),    // flour
                 Items.WATER_BUCKET
         ));
-
-        RecipesUtil.addRecipes("flour_pastry", new ShapelessOreRecipe(
-                new ResourceLocation(""),
-                new ItemStack(ItemLoader.rawFood, 2, 2),    // flour_pastry
-                new ItemStack(ItemLoader.rawFood, 1, 1),    // dough
-                new ItemStack(ItemLoader.tool, 1, 1)        // rolling_pin
-        ));
-
-        RecipesUtil.addRecipes("flour_silk", new ShapelessOreRecipe(
-                new ResourceLocation(""),
-                new ItemStack(ItemLoader.rawFood, 2, 3),    // flour_silk
-                new ItemStack(ItemLoader.rawFood, 1, 2),    // flour_pastry
-                new ItemStack(ItemLoader.tool, 1, 2)        // kitchen_knife
-        ));
     }
 }

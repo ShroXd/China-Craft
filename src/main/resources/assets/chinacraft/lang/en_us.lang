@@ -21,3 +21,6 @@ tile.chinacraft.chopping_board.name=Chopping Board
 
 #TABS
 itemGroup.china_craft=China Craft
+
+#JEI
+jei.chinacraft.category.choppingboard=Chopping Board
