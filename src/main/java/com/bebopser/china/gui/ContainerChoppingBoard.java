@@ -1,7 +1,7 @@
 package com.bebopser.china.gui;
 
 import com.bebopser.china.block.tileentity.TileEntityChoppingBoard;
-import com.bebopser.china.item.items.ItemCustomTool;
+import com.bebopser.china.item.ItemCustomTool;
 import com.bebopser.china.item.items.ItemRawFood;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;

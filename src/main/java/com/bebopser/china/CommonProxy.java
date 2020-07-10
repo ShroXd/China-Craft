@@ -15,6 +15,7 @@ public class CommonProxy {
     {
         new BlockLoader();
         new ItemLoader(event);
+        new ItemRegister();
         new PotionLoader(event);
         new TileEntityLoader();
     }
