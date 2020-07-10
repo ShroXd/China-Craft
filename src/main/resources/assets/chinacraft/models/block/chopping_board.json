@@ -1,6 +1,35 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "chinacraft:blocks/chopping_board"
-  }
+    "0": "chinacraft:blocks/chopping_board",
+    "1": "chinacraft:blocks/chopping_board_up"
+  },
+  "elements": [
+    {
+      "name": "board",
+      "from": [0, 0, 0],
+      "to": [16, 6, 16],
+      "faces": {
+        "down": {"uv": [ 0, 0, 16, 16], "texture": "#0"},
+        "up": {"uv": [ 0, 0, 16, 16], "texture": "#0"},
+        "north": {"uv": [ 0, 0, 16, 8], "texture": "#0"},
+        "south": {"uv": [ 0, 0, 16, 8], "texture": "#0"},
+        "west": {"uv": [ 0, 0, 16, 8], "texture": "#0"},
+        "east": {"uv": [ 0, 0, 16, 8], "texture": "#0"}
+      }
+    },
+    {
+      "name": "knife",
+      "from": [0, 6, 0],
+      "to": [16, 6, 16],
+      "faces": {
+        "down": {"uv": [ 0, 0, 16, 16], "texture": "#1"},
+        "up": {"uv": [ 0, 0, 16, 16], "texture": "#1"},
+        "north": {"uv": [ 0, 0, 16, 8], "texture": "#1"},
+        "south": {"uv": [ 0, 0, 16, 8], "texture": "#1"},
+        "west": {"uv": [ 0, 0, 16, 8], "texture": "#1"},
+        "east": {"uv": [ 0, 0, 16, 8], "texture": "#1"}
+      }
+    }
+  ]
 }
