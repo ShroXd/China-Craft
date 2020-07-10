@@ -1,6 +1,5 @@
 package com.bebopser.china.loader;
 
-import com.bebopser.china.item.ItemCustomTool;
 import com.bebopser.china.recipes.blocks.ChoppingBoardRecipe;
 import com.bebopser.china.recipes.blocks.ChoppingBoardRecipeManager;
 import com.bebopser.china.recipes.virtual.IChoppingBoardRecipe;
@@ -20,13 +19,13 @@ public class RecipeLoader {
 
     private void addChoppingBoardRecipe() {
 
-        registerAllDamage(ItemLoader.rawFood, ItemRegister.rolling_pin, new ItemStack(ItemLoader.rawFood, 3, 2));
+        registerAllDamage(ItemSeriesLoader.rawFood, ItemLoader.rolling_pin, new ItemStack(ItemSeriesLoader.rawFood, 3, 2));
 
 
         managerChoppingBoard.add(new ChoppingBoardRecipe(
-                NonNullListHelper.createNonNullList(new ItemStack(ItemLoader.rawFood, 1, 2)),
-                NonNullListHelper.createNonNullList(new ItemStack(ItemLoader.tool, 1, 2)),
-                new ItemStack(ItemLoader.rawFood, 1, 3)
+                NonNullListHelper.createNonNullList(new ItemStack(ItemSeriesLoader.rawFood, 1, 2)),
+                NonNullListHelper.createNonNullList(new ItemStack(ItemSeriesLoader.tool, 1, 2)),
+                new ItemStack(ItemSeriesLoader.rawFood, 1, 3)
         ));
     }
 

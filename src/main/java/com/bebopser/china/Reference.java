@@ -1,6 +1,6 @@
 package com.bebopser.china;
 
-import com.bebopser.china.loader.ItemLoader;
+import com.bebopser.china.loader.ItemSeriesLoader;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 
@@ -14,7 +14,7 @@ public class Reference {
     public static CreativeTabs tab = new CreativeTabs("china_craft") {
         @Override
         public ItemStack getTabIconItem() {
-            return new ItemStack(ItemLoader.edibleFood);
+            return new ItemStack(ItemSeriesLoader.edibleFood);
         }
     };
 }

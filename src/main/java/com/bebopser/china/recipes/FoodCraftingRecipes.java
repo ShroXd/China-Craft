@@ -1,6 +1,6 @@
 package com.bebopser.china.recipes;
 
-import com.bebopser.china.loader.ItemLoader;
+import com.bebopser.china.loader.ItemSeriesLoader;
 import com.bebopser.china.util.RecipesUtil;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -13,8 +13,8 @@ public class FoodCraftingRecipes {
 
         RecipesUtil.addRecipes("dough", new ShapelessOreRecipe(
                 new ResourceLocation(""),
-                new ItemStack(ItemLoader.rawFood, 1, 1),    // dough
-                new ItemStack(ItemLoader.rawFood, 1, 0),    // flour
+                new ItemStack(ItemSeriesLoader.rawFood, 1, 1),    // dough
+                new ItemStack(ItemSeriesLoader.rawFood, 1, 0),    // flour
                 Items.WATER_BUCKET
         ));
     }

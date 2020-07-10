@@ -1,85 +1,57 @@
 package com.bebopser.china.loader;
 
 import com.bebopser.china.Reference;
-import com.bebopser.china.item.ItemFoodBasic;
-import com.bebopser.china.item.ItemBasic;
-import com.bebopser.china.item.items.ItemEdibleFood;
-import com.bebopser.china.item.items.ItemRawFood;
-import com.bebopser.china.item.items.ItemCustomTool;
+import com.bebopser.china.item.ItemCustomTool;
+import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+@Mod.EventBusSubscriber(modid = Reference.MODID)
 public class ItemLoader {
 
-    public static ItemEdibleFood edibleFood = new ItemEdibleFood("edibleFood", 64,
-            new int[] {4, 2},
-            new float[] {0.2F, 0.2F},
-            new String[] {
-                    Reference.MODID + "." + "dumplings",
-                    Reference.MODID + "." + "moon_cake",
-            });
+    // 厨具
+    public static Item rolling_pin = new ItemCustomTool("rolling_pin", 1, 5);
 
-    public static ItemRawFood rawFood = new ItemRawFood("rawFood", 64,
-            new int[] {-1, -1},
-            new float[] {0.6F, 0.6F},
-            new String[] {
-                    Reference.MODID + "." + "flour",
-                    Reference.MODID + "." + "dough",
-                    Reference.MODID + "." + "flour_pastry",
-                    Reference.MODID + "." + "flour_silk",
-                    Reference.MODID + "." + "rice",
-                    Reference.MODID + "." + "sticky_rice"
-            });
+    public ItemLoader() {
+        MinecraftForge.EVENT_BUS.register(this);
+    }
 
-    public static ItemCustomTool tool = new ItemCustomTool("customTool", 1,
-            new String[] {
-                    Reference.MODID + "." + "bowl",
-                    Reference.MODID + "." + "kitchen_knife"
-            });
-
-    public ItemLoader(FMLPreInitializationEvent event) {
-        register(edibleFood);
-        register(rawFood);
-        register(tool);
+    @SubscribeEvent
+    public void registerItems(RegistryEvent.Register<Item> event) {
+        event.getRegistry().registerAll(
+                rolling_pin
+        );
     }
 
     @SideOnly(Side.CLIENT)
-    public static void registerRenders() {
-        registerRender(edibleFood);
-        registerRender(rawFood);
-        registerRender(tool);
-    }
-
-    private static void register(Item item) {
-        // item.            5
-        // chinacraft       Reference.MODID.length()
-        // .                1
-        int prefixLength = 5 + Reference.MODID.length() + 1;
-        ForgeRegistries.ITEMS.register(item.setRegistryName(item.getUnlocalizedName().substring(prefixLength)));
-        item.setCreativeTab(Reference.tab);
+    public static void initModels() {
+        registerRender(rolling_pin);
     }
 
     @SideOnly(Side.CLIENT)
-    private static void registerRender(ItemFoodBasic itemBase) {
-        for (int i = 0; i < itemBase.getSubNames().length; i++) {
-            String name = itemBase.getSubNames()[i].substring(Reference.MODID.length() + 1);
-            ModelResourceLocation model = new ModelResourceLocation(new ResourceLocation(Reference.MODID, name), "inventory");
-            ModelLoader.setCustomModelResourceLocation(itemBase, i, model);
-        }
-    }
+    private static void registerRender(Item item) {
+        if (item.getHasSubtypes()) {
+            NonNullList<ItemStack> subItems = NonNullList.create();
+            item.getSubItems(item.getCreativeTab(), subItems);
+            for (ItemStack subItem: subItems) {
+                String subItemName = item.getUnlocalizedName(subItem);
+                subItemName = subItemName.substring(5 + Reference.MODID.length() + 1);
 
-    @SideOnly(Side.CLIENT)
-    private static void registerRender(ItemBasic itemBase) {
-        for (int i = 0; i < itemBase.getSubNames().length; i++) {
-            String name = itemBase.getSubNames()[i].substring(Reference.MODID.length() + 1);
-            ModelResourceLocation model = new ModelResourceLocation(new ResourceLocation(Reference.MODID, name), "inventory");
-            ModelLoader.setCustomModelResourceLocation(itemBase, i, model);
+                ModelBakery.registerItemVariants(item, new ResourceLocation(Reference.MODID, subItemName));
+                ModelLoader.setCustomModelResourceLocation(item, subItem.getMetadata(), new ModelResourceLocation(Reference.MODID + ":" + subItemName, "inventory"));
+            }
+        } else {
+            ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(Reference.MODID + ":" + item.delegate.name().getResourcePath(), "inventory"));
         }
     }
 }

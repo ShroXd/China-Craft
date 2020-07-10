@@ -14,8 +14,8 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event)
     {
         new BlockLoader();
-        new ItemLoader(event);
-        new ItemRegister();
+        new ItemSeriesLoader(event);
+        new ItemLoader();
         new PotionLoader(event);
         new TileEntityLoader();
     }

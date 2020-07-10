@@ -1,6 +1,6 @@
 package com.bebopser.china.recipes;
 
-import com.bebopser.china.loader.ItemLoader;
+import com.bebopser.china.loader.ItemSeriesLoader;
 import com.bebopser.china.util.RecipesUtil;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -13,7 +13,7 @@ public class ToolCraftingRecipes {
 
         RecipesUtil.addRecipes("kitchen_knife", new ShapedOreRecipe(
                 new ResourceLocation(""),
-                new ItemStack(ItemLoader.tool, 1, 2),
+                new ItemStack(ItemSeriesLoader.tool, 1, 2),
                 "A  ", " A ", "  B",
                 'A', Items.IRON_INGOT,
                 'B', Items.STICK
