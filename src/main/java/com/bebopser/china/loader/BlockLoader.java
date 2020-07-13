@@ -2,6 +2,7 @@ package com.bebopser.china.loader;
 
 import com.bebopser.china.Reference;
 import com.bebopser.china.block.ChoppingBoard;
+import com.bebopser.china.block.CookingTable;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -17,9 +18,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @Mod.EventBusSubscriber(modid = Reference.MODID)
 public class BlockLoader {
 
-
-
     public static Block chopping_board = new ChoppingBoard("chopping_board");
+    public static Block cooking_table = new CookingTable("cooking_table", 0.0F, false);
+
 
     public BlockLoader() {
         MinecraftForge.EVENT_BUS.register(this);
@@ -28,19 +29,21 @@ public class BlockLoader {
     @SubscribeEvent
     public void registerBlocks(RegistryEvent.Register<Block> event) {
         event.getRegistry().registerAll(
-                chopping_board
+                cooking_table, chopping_board
         );
     }
 
     @SubscribeEvent
     public void registerItems(RegistryEvent.Register<Item> event) {
         event.getRegistry().registerAll(
+                getRegisteredItemBlock(cooking_table),
                 getRegisteredItemBlock(chopping_board)
         );
     }
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
+        registerRender(cooking_table, "cooking_table");
         registerRender(chopping_board, "chopping_board");
     }
 
