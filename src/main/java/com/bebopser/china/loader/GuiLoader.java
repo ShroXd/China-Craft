@@ -2,7 +2,9 @@ package com.bebopser.china.loader;
 
 import com.bebopser.china.ChinaCraft;
 import com.bebopser.china.gui.ContainerChoppingBoard;
+import com.bebopser.china.gui.ContainerCookingTable;
 import com.bebopser.china.gui.GuiContainerChoppingBoard;
+import com.bebopser.china.gui.GuiContainerCookingTable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -15,6 +17,7 @@ import java.util.Objects;
 public class GuiLoader implements IGuiHandler {
 
     public static final int GUI_CHOPPING_BOARD = 1;
+    public static final int GUI_COOKING_TABLE = 2;
 
     public GuiLoader() {
         NetworkRegistry.INSTANCE.registerGuiHandler(ChinaCraft.instance, this);
@@ -26,6 +29,8 @@ public class GuiLoader implements IGuiHandler {
         switch (ID) {
             case GUI_CHOPPING_BOARD:
                 return new ContainerChoppingBoard(player, Objects.requireNonNull(world.getTileEntity(new BlockPos(x, y, z))));
+            case GUI_COOKING_TABLE:
+                return new ContainerCookingTable(player, Objects.requireNonNull(world.getTileEntity(new BlockPos(x, y, z))));
             default:
                 return null;
         }
@@ -37,6 +42,8 @@ public class GuiLoader implements IGuiHandler {
         switch (ID) {
             case GUI_CHOPPING_BOARD:
                 return new GuiContainerChoppingBoard(new ContainerChoppingBoard(player, Objects.requireNonNull(world.getTileEntity(new BlockPos(x, y, z)))));
+            case GUI_COOKING_TABLE:
+                return new GuiContainerCookingTable(new ContainerCookingTable(player, Objects.requireNonNull(world.getTileEntity(new BlockPos(x, y,z)))));
             default:
                 return null;
         }

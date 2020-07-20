@@ -20,6 +20,7 @@ public class BlockLoader {
 
     public static Block chopping_board = new ChoppingBoard("chopping_board");
     public static Block cooking_table = new CookingTable("cooking_table", 0.0F, false);
+    public static Block lit_cooking_table = new CookingTable("lit_cooking_table", 0.875F, true);
 
 
     public BlockLoader() {
@@ -29,7 +30,7 @@ public class BlockLoader {
     @SubscribeEvent
     public void registerBlocks(RegistryEvent.Register<Block> event) {
         event.getRegistry().registerAll(
-                cooking_table, chopping_board
+                cooking_table, chopping_board, lit_cooking_table
         );
     }
 
@@ -37,7 +38,8 @@ public class BlockLoader {
     public void registerItems(RegistryEvent.Register<Item> event) {
         event.getRegistry().registerAll(
                 getRegisteredItemBlock(cooking_table),
-                getRegisteredItemBlock(chopping_board)
+                getRegisteredItemBlock(chopping_board),
+                getRegisteredItemBlock(lit_cooking_table)
         );
     }
 
@@ -45,6 +47,7 @@ public class BlockLoader {
     public static void initModels() {
         registerRender(cooking_table, "cooking_table");
         registerRender(chopping_board, "chopping_board");
+        registerRender(lit_cooking_table, "lit_cooking_table");
     }
 
     private static Item getRegisteredItemBlock(Block block) {

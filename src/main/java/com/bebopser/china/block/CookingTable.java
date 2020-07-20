@@ -65,7 +65,7 @@ public class CookingTable extends BlockContainer implements ITileEntityProvider 
                                     EnumHand hand, EnumFacing facing,
                                     float hitX, float hitY, float hitZ) {
         if (!world.isRemote) {
-            int id = GuiLoader.GUI_CHOPPING_BOARD;
+            int id = GuiLoader.GUI_COOKING_TABLE;
             player.openGui(ChinaCraft.instance, id, world, pos.getX(), pos.getY(), pos.getZ());
         }
         return true;
@@ -101,5 +101,24 @@ public class CookingTable extends BlockContainer implements ITileEntityProvider 
     @Override
     public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
         return new ItemStack(BlockLoader.cooking_table);
+    }
+
+    public static void setState(boolean active, World world, BlockPos pos) {
+        IBlockState iBlockState = world.getBlockState(pos);
+        TileEntity tileEntity = world.getTileEntity(pos);
+        keepInventory = true;
+
+        if (active) {
+            world.setBlockState(pos, BlockLoader.lit_cooking_table.getDefaultState().withProperty(FACING, iBlockState.getValue(FACING)));
+        } else {
+            world.setBlockState(pos, BlockLoader.cooking_table.getDefaultState().withProperty(FACING, iBlockState.getValue(FACING)));
+        }
+
+        keepInventory = false;
+
+        if (tileEntity != null) {
+            tileEntity.validate();
+            world.setTileEntity(pos, tileEntity);
+        }
     }
 }
