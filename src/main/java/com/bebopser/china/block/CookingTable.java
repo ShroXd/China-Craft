@@ -44,7 +44,6 @@ public class CookingTable extends BlockContainer implements ITileEntityProvider 
         this.setLightLevel(lightValue);
         this.setHardness(3.5F);
         this.setSoundType(SoundType.STONE);
-        this.setCreativeTab(Reference.tab);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 
         this.isBurning = isBurning;

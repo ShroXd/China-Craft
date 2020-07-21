@@ -17,13 +17,16 @@ item.chinacraft.rolling_pin.name=擀面杖
 item.chinacraft.kitchen_knife.name=菜刀
 
 #China Craft Block
-tile.chinacraft.chopping_board.name=切菜板
+tile.chopping_board.name=切菜板
+tile.cooking_table.name=烹饪台
 
 #China Craft GUI
 chinacraft.container.chopping_board=切菜板
+chinacraft.container.cooking_table=烹饪台
 
 #TABS
 itemGroup.china_craft=华夏文明
 
 #JEI
-jei.chinacraft.category.choppingboard=菜板
+jei.chinacraft.category.choppingboard=切菜板
+jei.chinacraft.category.cookingtable=烹饪台

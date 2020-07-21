@@ -19,7 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockLoader {
 
     public static Block chopping_board = new ChoppingBoard("chopping_board");
-    public static Block cooking_table = new CookingTable("cooking_table", 0.0F, false);
+    public static Block cooking_table = new CookingTable("cooking_table", 0.0F, false).setCreativeTab(Reference.tab);
     public static Block lit_cooking_table = new CookingTable("lit_cooking_table", 0.875F, true);
 
 
