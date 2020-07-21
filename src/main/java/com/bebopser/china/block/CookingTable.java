@@ -5,6 +5,7 @@ import com.bebopser.china.Reference;
 import com.bebopser.china.block.tileentity.TileEntityCookingTable;
 import com.bebopser.china.loader.BlockLoader;
 import com.bebopser.china.loader.GuiLoader;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
@@ -24,6 +25,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.IItemHandlerModifiable;
 
 public class CookingTable extends BlockContainer implements ITileEntityProvider {
 
@@ -69,6 +73,39 @@ public class CookingTable extends BlockContainer implements ITileEntityProvider 
             player.openGui(ChinaCraft.instance, id, world, pos.getX(), pos.getY(), pos.getZ());
         }
         return true;
+    }
+
+    @Override
+    public void breakBlock(World world, BlockPos pos, IBlockState state) {
+        if (!keepInventory) {
+            TileEntityCookingTable te = (TileEntityCookingTable) world.getTileEntity(pos);
+            IItemHandler inventory0 = te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
+            IItemHandler inventory1 = te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.NORTH);
+            IItemHandler inventory2 = te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.DOWN);
+
+            for (int i = inventory0.getSlots() - 1; i >= 0; --i) {
+                if (inventory0.getStackInSlot(i) != ItemStack.EMPTY) {
+                    Block.spawnAsEntity(world, pos, inventory0.getStackInSlot(i));
+                    ((IItemHandlerModifiable) inventory0).setStackInSlot(i, ItemStack.EMPTY);
+                }
+            }
+
+            for (int i = inventory1.getSlots() - 1; i >= 0; --i) {
+                if (inventory1.getStackInSlot(i) != ItemStack.EMPTY) {
+                    Block.spawnAsEntity(world, pos, inventory1.getStackInSlot(i));
+                    ((IItemHandlerModifiable) inventory1).setStackInSlot(i, ItemStack.EMPTY);
+                }
+            }
+
+            for (int i = inventory2.getSlots() - 1; i >= 0; --i) {
+                if (inventory2.getStackInSlot(i) != ItemStack.EMPTY) {
+                    Block.spawnAsEntity(world, pos, inventory2.getStackInSlot(i));
+                    ((IItemHandlerModifiable) inventory2).setStackInSlot(i, ItemStack.EMPTY);
+                }
+            }
+        }
+
+        super.breakBlock(world, pos, state);
     }
 
     @Override

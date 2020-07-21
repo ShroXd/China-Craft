@@ -14,12 +14,9 @@ public class GuiContainerCookingTable extends GuiContainer {
     private static final String TEXTURE_PATH = Reference.MODID + ":" + "textures/gui/cooking_table.png";
     private static final ResourceLocation TEXTURE = new ResourceLocation(TEXTURE_PATH);
     private ContainerCookingTable inventory;
-    private int totalDryTime = 1;
-    private int totalSteam = 32;
 
     public GuiContainerCookingTable(ContainerCookingTable inventorySlotsIn) {
         super(inventorySlotsIn);
-
         this.xSize = 176;
         this.ySize = 166;
         this.inventory = inventorySlotsIn;
@@ -42,7 +39,16 @@ public class GuiContainerCookingTable extends GuiContainer {
 
         this.drawTexturedModalRect(offsetX, offsetY, 0, 0, this.xSize, this.ySize);
 
+        int cookTime = this.inventory.getCookTime();
+        int textureWidth = (int) Math.ceil(24.0 * cookTime / 500);
 
+        int fuelTime = this.inventory.getFuelTime();
+        int fuelTotalTime = this.inventory.getFuelTotalTime();
+        int textureLength = (int) Math.ceil(14.0 * fuelTime / fuelTotalTime);
+
+        // TODO: 材质问题
+        this.drawTexturedModalRect(offsetX + 78, offsetY + 38, 176, 14, textureWidth, 17);
+        this.drawTexturedModalRect(offsetX + 53, offsetY + 53 - textureLength, 176, 14 - textureLength, 14, textureLength);
     }
 
     @Override
